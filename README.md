@@ -76,4 +76,4 @@ W projekcie wykorzystano licznik **GoatCounter**:
 ## 📜 Licencja i prawa autorskie (Licensing & Disclaimer)
 
 * **Kod źródłowy:** Całość napisanego kodu (HTML, CSS, JavaScript) udostępniona jest na licencji **[MIT](LICENSE)**.
-* **Materiały archiwalne (Audio i Grafika):** Wszystkie pliki dźwiękowe oraz graficzne zostały wyekstrahowane z historycznego, anonimowego programu typu freeware `KROWA.EXE` (lata 90. XX wieku). Zostały one dołączone wyłącznie w celach archiwalnych, edukacyjnych i ochrony cyfrowego folkloru tamtej epoki (*digital preservation / abandonware*).
+* **Materiały archiwalne (Audio i Grafika):** Wszystkie pliki dźwiękowe oraz graficzne zostały wyekstrahowane z historycznego, anonimowego programu typu freeware `KROWY.EXE` (lata 90. XX wieku). Zostały one dołączone wyłącznie w celach archiwalnych, edukacyjnych i ochrony cyfrowego folkloru tamtej epoki (*digital preservation / abandonware*).
