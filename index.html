@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Krasula Mleczna 2.0</title>
     <style>
         body {
@@ -11,19 +12,30 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            /* Dodany margines - aplikacja nie będzie "przyklejona" do krawędzi ekranu */
+            padding: 20px; 
+            box-sizing: border-box;
+            overflow: hidden; 
         }
 
         .app-container {
             position: relative;
-            display: inline-block;
+            /* Szerokość dostosuje się do ekranu uwzględniając padding (marginesy) z body */
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             user-select: none; 
             -webkit-user-drag: none;
         }
 
         .app-container img {
             display: block;
-            max-width: 100%;
+            width: 100%;
             height: auto;
+            max-height: calc(100vh - 40px); /* Ochrona przed obcięciem obrazu z marginesem */
+            object-fit: contain;
             pointer-events: none; 
         }
 
@@ -31,28 +43,14 @@
             position: absolute;
             cursor: pointer;
         }
-
-        #area-zdrowa {
-            top: 78%;
-            left: 9%;
-            width: 37%;
-            height: 15%;
-        }
-
-        #area-zwariowana {
-            top: 78%;
-            left: 54%;
-            width: 37%;
-            height: 15%;
-        }
     </style>
-    <!-- Kod śledzący GoatCounter (Zlicza ogólne wejścia na stronę) -->
+    <!-- Kod śledzący GoatCounter -->
     <script data-goatcounter="https://krowy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
-    <div class="app-container">
-        <img src="apka.png" alt="Krasula Mleczna 2.0">
+    <div class="app-container" id="app-box">
+        <img src="apka.png" alt="Krasula Mleczna 2.0" id="main-img">
         
         <div id="area-zdrowa" class="clickable-area" title="Krowa Zdrowa"></div>
         <div id="area-zwariowana" class="clickable-area" title="Krowa Zwariowana"></div>
@@ -62,12 +60,40 @@
     <audio id="audio-zwariowana" src="plik2.mp3"></audio>
 
     <script>
+        // Skrypt dostosowujący obszary klikalne do rzeczywistych wymiarów obrazka
+        function resizeHotspots() {
+            const img = document.getElementById('main-img');
+            const container = document.getElementById('app-box');
+            
+            const imgRect = img.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            
+            const offsetX = imgRect.left - containerRect.left;
+            const offsetY = imgRect.top - containerRect.top;
+            
+            // Krowa Zdrowa (Lewa)
+            const btnZdrowa = document.getElementById('area-zdrowa');
+            btnZdrowa.style.left = (offsetX + imgRect.width * 0.09) + 'px';
+            btnZdrowa.style.top = (offsetY + imgRect.height * 0.78) + 'px';
+            btnZdrowa.style.width = (imgRect.width * 0.37) + 'px';
+            btnZdrowa.style.height = (imgRect.height * 0.15) + 'px';
+            
+            // Krowa Zwariowana (Prawa)
+            const btnZwariowana = document.getElementById('area-zwariowana');
+            btnZwariowana.style.left = (offsetX + imgRect.width * 0.54) + 'px';
+            btnZwariowana.style.top = (offsetY + imgRect.height * 0.78) + 'px';
+            btnZwariowana.style.width = (imgRect.width * 0.37) + 'px';
+            btnZwariowana.style.height = (imgRect.height * 0.15) + 'px';
+        }
+
+        window.addEventListener('load', resizeHotspots);
+        window.addEventListener('resize', resizeHotspots);
+
         document.getElementById('area-zdrowa').addEventListener('click', function() {
             var audio = document.getElementById('audio-zdrowa');
             audio.currentTime = 0;
             audio.play();
 
-            // Wysłanie zdarzenia (kliknięcia) do GoatCounter
             if (window.goatcounter && window.goatcounter.count) {
                 window.goatcounter.count({
                     path:  'klik-zdrowa',
@@ -82,7 +108,6 @@
             audio.currentTime = 0;
             audio.play();
 
-            // Wysłanie zdarzenia (kliknięcia) do GoatCounter
             if (window.goatcounter && window.goatcounter.count) {
                 window.goatcounter.count({
                     path:  'klik-zwariowana',
