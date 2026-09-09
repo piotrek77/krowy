@@ -1,4 +1,4 @@
-# 🐄 KROWA.EXE (Web Edition)
+# 🐄 KROWY.EXE (Web Edition)
 
 > Współczesna, webowa rekonstrukcja kultowego polskiego programu-żartu z lat 90. (Windows 95/98).
 
