@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Krasula Mleczna 2.0</title>
+    <style>
+        body {
+            background-color: #006600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .app-container {
+            position: relative;
+            display: inline-block;
+            user-select: none; 
+            -webkit-user-drag: none;
+        }
+
+        .app-container img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            pointer-events: none; 
+        }
+
+        .clickable-area {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #area-zdrowa {
+            top: 78%;
+            left: 9%;
+            width: 37%;
+            height: 15%;
+        }
+
+        #area-zwariowana {
+            top: 78%;
+            left: 54%;
+            width: 37%;
+            height: 15%;
+        }
+    </style>
+    <!-- Kod śledzący GoatCounter (Zlicza ogólne wejścia na stronę) -->
+    <script data-goatcounter="https://krowy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <img src="apka.png" alt="Krasula Mleczna 2.0">
+        
+        <div id="area-zdrowa" class="clickable-area" title="Krowa Zdrowa"></div>
+        <div id="area-zwariowana" class="clickable-area" title="Krowa Zwariowana"></div>
+    </div>
+
+    <audio id="audio-zdrowa" src="plik1.mp3"></audio>
+    <audio id="audio-zwariowana" src="plik2.mp3"></audio>
+
+    <script>
+        document.getElementById('area-zdrowa').addEventListener('click', function() {
+            var audio = document.getElementById('audio-zdrowa');
+            audio.currentTime = 0;
+            audio.play();
+
+            // Wysłanie zdarzenia (kliknięcia) do GoatCounter
+            if (window.goatcounter && window.goatcounter.count) {
+                window.goatcounter.count({
+                    path:  'klik-zdrowa',
+                    title: 'Kliknięcie - Krowa Zdrowa',
+                    event: true
+                });
+            }
+        });
+
+        document.getElementById('area-zwariowana').addEventListener('click', function() {
+            var audio = document.getElementById('audio-zwariowana');
+            audio.currentTime = 0;
+            audio.play();
+
+            // Wysłanie zdarzenia (kliknięcia) do GoatCounter
+            if (window.goatcounter && window.goatcounter.count) {
+                window.goatcounter.count({
+                    path:  'klik-zwariowana',
+                    title: 'Kliknięcie - Krowa Zwariowana',
+                    event: true
+                });
+            }
+        });
+    </script>
+</body>
+</html>
