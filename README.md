@@ -8,6 +8,13 @@
 
 ---
 
+### 🌐 Wypróbuj na żywo!
+👉 **[https://krowy.cytr.us/](https://krowy.cytr.us/)** 👈
+
+*Projekt jest dumnie hostowany na serwerach **[Mikr.us](https://mikr.us/?r=2fc012ae)** – gorąco polecam te ultra-tanie, polskie serwery VPS, idealne do małych projektów!*
+
+---
+
 ## 📌 O projekcie
 
 W drugiej połowie lat 90. ubiegłego wieku, w epoce dyskietek 3,5 cala i pracowni komputerowych z Windowsem 95/98, wielką popularnością cieszyły się mini-programy żartobliwe (tzw. *joke-programs*). Jednym z takich klasyków polskiego wczesnego internetu był anonimowy programik **`KROWA.EXE`**, stworzony na fali głośnego wówczas tematu choroby szalonych krów (BSE).
